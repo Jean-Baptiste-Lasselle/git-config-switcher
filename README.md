@@ -1,6 +1,18 @@
-# git-config-switcher
+# git config switcher
 
-How do  I manage having many gpp signatures / git identies ? 
+How do  I manage having many Identities across git service providers ? 
+
+Using : 
+
+* SSH Keys,
+* GPG Keys
+* keybase.io service, and its proof of identity feature
+* github.com and gitlab.com, and their : 
+  * email verification features
+  * SSH Keys features
+  * GPGP Keys features
+
+> Done on a Debain Linux workstation
 
 
 ### cheatsheet
@@ -20,6 +32,7 @@ gpg --list-public
 
 git config --global --list
 
+# -----
 # work at cresh 
 git config --global commit.gpgsign true
 git config --global user.name "Jean-Baptiste Lasselle"
@@ -28,6 +41,11 @@ git config --global user.signingkey B058780A3258C5D4
 
 git config --global --list
 
+export GIT_SSH_COMMAND='ssh -i ~/.ssh.perso.backed/id_rsa'
+ssh -Ti ~/.ssh/id_rsa git@github.com
+ssh -Ti ~/.ssh/id_rsa git@gitlab.com
+
+# -----
 # work on my personal projects
 git config --global commit.gpgsign true
 git config --global user.name "Jean-Baptiste-Lasselle"
@@ -102,7 +120,9 @@ TODO (also very simple, just search the web, or go to [this issue I opened in he
 
 
 
-### How to re-geenerate my SSH keys for 2 identities, and for both gitlab.com and github.com
+### How to reset my SSH keys for 2 identities, and for both gitlab.com and github.com
+
+* regenerate and ssh-agent register both SSH keys :
 
 ```bash
 
@@ -119,6 +139,8 @@ ssh-add ~/.ssh.perso.backed/id_rsa
 
 ```
 
+* Then add them to my accounts  (On all 4 accounts, `Settings -> SSH Keys` menus, easy to find)
+
 * personal github and gitlab :
   * https://github.com/Jean-Baptiste-Lasselle
   * https://gitlab.com/pegasus.devops
@@ -126,4 +148,13 @@ ssh-add ~/.ssh.perso.backed/id_rsa
 * professional github and gitlab :
   * https://gitlab.com/jean-baptiste4
   * https://github.com/jblasselle-creshdevops
-  
+
+* Last, and most important : secure all the keys in a private `HashiCorp Vault` that has 1,2,3 DRP (one copy on site, one copy remote site in cloud)
+ 
+ 
+ # The Final Question
+ 
+ And how would you do that if suddenly there was no internet anymore ?
+ 
+ To be or not to be , that, my friend, is the question.
+ 

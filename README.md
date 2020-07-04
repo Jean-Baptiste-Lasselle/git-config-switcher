@@ -158,7 +158,10 @@ ssh-add ~/.ssh.perso.backed/id_rsa
 
 * Last, and most important :
   * secure all the keys in a private `HashiCorp Vault` that has 1,2,3 DRP (one copy on site, one copy remote site in cloud)
-  * automate secret rotation on a 15 days basis, inspired by hashcorp's execllent seth vargo example scripts based on https://github.com/sethvargo/vault-secrets-gen and https://github.com/scarolan/painless-password-rotation (Hey, i'm gonna change my password today!!! howdy! ;) ) @sethvargo
+  * automate secret rotation on a 15 days basis, inspired by hashcorp's execllent seth vargo example scripts based on: 
+    * https://github.com/sethvargo/vault-secrets-gen (backed at https://gitlab.com/second-bureau/bellerophon/hashicorp-vault/password-rotation/vault-secrets-gen )
+    * and https://github.com/scarolan/painless-password-rotation  (backed at https://gitlab.com/second-bureau/bellerophon/hashicorp-vault/password-rotation/vault-secrets-gen ) 
+    * (Hey, i'm gonna change my password today !!! so excited ! ;) ) @seancarolan
 
 
 #### The hashicorp vault password rotator 

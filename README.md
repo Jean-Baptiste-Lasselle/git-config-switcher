@@ -102,7 +102,28 @@ TODO (also very simple, just search the web, or go to [this issue I opened in he
 
 
 
+### How to re-geenerate my SSH keys for 2 identities, and for both gitlab.com and github.com
 
+```bash
 
+# ---- > FOR MY BOURNE IDENTITY AT WORK AT CREHS.EU => GITLAB.COM ONLY
+# regenerate a key pair for my identity at work at cresh.eu
+ssh-keygen -t rsa -b 2048 -C  "jbl@cresh.eu" -N "" -P "" -f ~/.ssh/id_rsa
+# important : need to add this to the ssh-agent, or gitlab will complain
+ssh-add ~/.ssh/id_rsa
 
+# ---- > FOR MY personal BOURNE IDENTITY IN MY PERSONAL PEROJECTS => GITLAB.COM AND GITHUB.COM
+ssh-keygen -t rsa -b 2048 -C  "jbl@cresh.eu" -N "" -P "" -f ~/.ssh.perso.backed/id_rsa
+# important : need to add this to the ssh-agent, or gitlab will complain
+ssh-add ~/.ssh.perso.backed/id_rsa
 
+```
+
+* personal github and gitlab :
+  * https://github.com/Jean-Baptiste-Lasselle
+  * https://gitlab.com/pegasus.devops
+
+* professional github and gitlab :
+  * https://gitlab.com/jean-baptiste4
+  * https://github.com/jblasselle-creshdevops
+  

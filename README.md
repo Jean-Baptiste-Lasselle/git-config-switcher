@@ -72,6 +72,29 @@ Welcome to GitLab, @jean-baptiste4!
 jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ 
 
 ```
+* bourne identity switch demo : 
+
+```bash 
+jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global commit.gpgsign true
+jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global user.name "Jean-Baptiste Lasselle"
+jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global user.email jean-baptiste@cresh.eu
+jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global user.signingkey B058780A3258C5D4
+jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --list --global
+user.name=Jean-Baptiste Lasselle
+user.signingkey=B058780A3258C5D4
+user.email=jean-baptiste@cresh.eu
+commit.gpgsign=true
+jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global commit.gpgsign true
+jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global user.name "Jean-Baptiste-Lasselle"
+jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global user.email jean.baptiste.lasselle.pegasus@gmail.com
+jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global user.signingkey 7B19A8E1574C2883
+jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --list --global
+user.name=Jean-Baptiste-Lasselle
+user.signingkey=7B19A8E1574C2883
+user.email=jean.baptiste.lasselle.pegasus@gmail.com
+commit.gpgsign=true
+jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ 
+```
 
 * my personal SSH Keypairs are saved into a private (no members added) gitlab.com repository (so I do not ever loose them) (improvement : switch to a proper secret manager, like hashicorp vault, which has drp capabilities 0.000000001 % unrecoverable loss probability), especially `~/.ssh.perso.backed/id_rsa`
 

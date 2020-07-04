@@ -35,8 +35,21 @@ git config --global user.email jean.baptiste.lasselle.pegasus@gmail.com
 git config --global user.signingkey 7B19A8E1574C2883
 
 git config --global --list
-
+export GIT_SSH_COMMAND='ssh -i ~/.ssh.perso.backed/id_rsa'
+ssh -Ti ~/.ssh.perso.backed/id_rsa git@github.com
+ssh -Ti ~/.ssh.perso.backed/id_rsa git@gitlab.com
 ```
+
+* git ssh tests output example : 
+
+```bash 
+jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ ssh -Ti ~/.ssh.perso.backed/id_rsa git@github.com
+Hi Jean-Baptiste-Lasselle! You've successfully authenticated, but GitHub does not provide shell access.
+jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ 
+```
+
+* my personal SSH Keypairs are saved into a private (no members added) gitlab.com repository (so I do not ever loose them) (improvement : switch to a proper secret manager, like hashicorp vault, which has drp capabilities 0.000000001 % unrecoverable loss probability), especially `~/.ssh.perso.backed/id_rsa`
+
 
 
 * My git config for work at cresh.eu (through gitlab.com, verified email address, related to https://keybase.io/jblassellecresh ) : 

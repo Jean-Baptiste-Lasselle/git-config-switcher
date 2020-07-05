@@ -67,43 +67,57 @@ ssh -Ti ~/.ssh.perso.backed/id_rsa git@github.com
 ssh -Ti ~/.ssh.perso.backed/id_rsa git@gitlab.com
 ```
 
-* git ssh tests output example : 
-
-```bash 
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ ssh -Ti ~/.ssh.perso.backed/id_rsa git@github.com
-Hi Jean-Baptiste-Lasselle! You've successfully authenticated, but GitHub does not provide shell access.
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ ssh -Ti ~/.ssh.perso.backed/id_rsa git@gitlab.com
-Welcome to GitLab, @pegasus.devops!
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ ssh -Ti ~/.ssh/id_rsa git@github.com
-Hi jblasselle-creshdevops! You've successfully authenticated, but GitHub does not provide shell access.
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ ssh -Ti ~/.ssh/id_rsa git@gitlab.com
-Welcome to GitLab, @jean-baptiste4!
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ 
-
-```
 * bourne identity switch demo : 
 
-```bash 
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global commit.gpgsign true
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global user.name "Jean-Baptiste Lasselle"
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global user.email jean-baptiste@cresh.eu
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global user.signingkey B058780A3258C5D4
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --list --global
+```bash
+jbl@poste-devops-jbl-16gbram:~/demo$ # -----
+jbl@poste-devops-jbl-16gbram:~/demo$ # work at cresh
+jbl@poste-devops-jbl-16gbram:~/demo$ git config --global commit.gpgsign true
+jbl@poste-devops-jbl-16gbram:~/demo$ git config --global user.name "Jean-Baptiste Lasselle"
+jbl@poste-devops-jbl-16gbram:~/demo$ git config --global user.email jean-baptiste@cresh.eu
+jbl@poste-devops-jbl-16gbram:~/demo$ git config --global user.signingkey B058780A3258C5D4
+jbl@poste-devops-jbl-16gbram:~/demo$
+jbl@poste-devops-jbl-16gbram:~/demo$ git config --global --list
 user.name=Jean-Baptiste Lasselle
 user.signingkey=B058780A3258C5D4
 user.email=jean-baptiste@cresh.eu
 commit.gpgsign=true
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global commit.gpgsign true
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global user.name "Jean-Baptiste-Lasselle"
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global user.email jean.baptiste.lasselle.pegasus@gmail.com
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --global user.signingkey 7B19A8E1574C2883
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ git config --list --global
+jbl@poste-devops-jbl-16gbram:~/demo$
+jbl@poste-devops-jbl-16gbram:~/demo$ # will re-define the default identity in use
+jbl@poste-devops-jbl-16gbram:~/demo$ # https://docstore.mik.ua/orelly/networking_2ndEd/ssh/ch06_04.htm
+jbl@poste-devops-jbl-16gbram:~/demo$ ssh-add ~/.ssh/id_rsa
+Identity added: /home/jbl/.ssh/id_rsa (/home/jbl/.ssh/id_rsa)
+jbl@poste-devops-jbl-16gbram:~/demo$
+jbl@poste-devops-jbl-16gbram:~/demo$ export GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa'
+jbl@poste-devops-jbl-16gbram:~/demo$ ssh -Ti ~/.ssh/id_rsa git@github.com
+Hi jblasselle-creshdevops! You've successfully authenticated, but GitHub does not provide shell access.
+jbl@poste-devops-jbl-16gbram:~/demo$ ssh -Ti ~/.ssh/id_rsa git@gitlab.com
+Welcome to GitLab, @jean-baptiste4!
+jbl@poste-devops-jbl-16gbram:~/demo$ # -----
+jbl@poste-devops-jbl-16gbram:~/demo$ # work on my personal projects
+jbl@poste-devops-jbl-16gbram:~/demo$ git config --global commit.gpgsign true
+jbl@poste-devops-jbl-16gbram:~/demo$ git config --global user.name "Jean-Baptiste-Lasselle"
+jbl@poste-devops-jbl-16gbram:~/demo$ git config --global user.email jean.baptiste.lasselle.pegasus@gmail.com
+jbl@poste-devops-jbl-16gbram:~/demo$ git config --global user.signingkey 7B19A8E1574C2883
+jbl@poste-devops-jbl-16gbram:~/demo$
+jbl@poste-devops-jbl-16gbram:~/demo$ git config --global --list
 user.name=Jean-Baptiste-Lasselle
 user.signingkey=7B19A8E1574C2883
 user.email=jean.baptiste.lasselle.pegasus@gmail.com
 commit.gpgsign=true
-jbl@poste-devops-jbl-16gbram:~/k3s-topgun$ 
+jbl@poste-devops-jbl-16gbram:~/demo$
+jbl@poste-devops-jbl-16gbram:~/demo$ # will re-define the default identity in use
+jbl@poste-devops-jbl-16gbram:~/demo$ # https://docstore.mik.ua/orelly/networking_2ndEd/ssh/ch06_04.htm
+jbl@poste-devops-jbl-16gbram:~/demo$ ssh-add ~/.ssh.perso.backed/id_rsa
+Identity added: /home/jbl/.ssh.perso.backed/id_rsa (/home/jbl/.ssh.perso.backed/id_rsa)
+jbl@poste-devops-jbl-16gbram:~/demo$
+jbl@poste-devops-jbl-16gbram:~/demo$ export GIT_SSH_COMMAND='ssh -i ~/.ssh.perso.backed/id_rsa'
+jbl@poste-devops-jbl-16gbram:~/demo$ ssh -Ti ~/.ssh.perso.backed/id_rsa git@github.com
+Hi Jean-Baptiste-Lasselle! You've successfully authenticated, but GitHub does not provide shell access.
+jbl@poste-devops-jbl-16gbram:~/demo$ ssh -Ti ~/.ssh.perso.backed/id_rsa git@gitlab.com
+Welcome to GitLab, @pegasus.devops!
 ```
+
 
 * my personal SSH Keypairs are saved into a private (no members added) gitlab.com repository (so I do not ever loose them) (improvement : switch to a proper secret manager, like hashicorp vault, which has drp capabilities 0.000000001 % unrecoverable loss probability), especially `~/.ssh.perso.backed/id_rsa`
 

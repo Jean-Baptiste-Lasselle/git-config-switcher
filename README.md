@@ -38,6 +38,8 @@ git config --global commit.gpgsign true
 git config --global user.name "Jean-Baptiste Lasselle"
 git config --global user.email jean-baptiste@cresh.eu
 git config --global user.signingkey B058780A3258C5D4
+# Now, to sign GIt commits, for example inside an SSH session (where TTY is a bit different ...)
+export GPG_TTY=$(tty)
 
 git config --global --list
 
@@ -49,12 +51,15 @@ export GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa'
 ssh -Ti ~/.ssh/id_rsa git@github.com
 ssh -Ti ~/.ssh/id_rsa git@gitlab.com
 
+
 # -----
 # work on my personal projects
 git config --global commit.gpgsign true
 git config --global user.name "Jean-Baptiste-Lasselle"
 git config --global user.email jean.baptiste.lasselle.pegasus@gmail.com
 git config --global user.signingkey 7B19A8E1574C2883
+# Now, to sign GIt commits, for example inside an SSH session (where TTY is a bit different ...)
+export GPG_TTY=$(tty)
 
 git config --global --list
 

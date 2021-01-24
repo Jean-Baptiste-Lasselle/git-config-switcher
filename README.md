@@ -72,7 +72,7 @@ ssh -Ti ~/.ssh/id_rsa git@gitlab.com
 # work on my gravitee.io projects
 git config --global commit.gpgsign true
 git config --global user.name "Jean-Baptiste-Lasselle"
-git config --global user.email jean.baptiste.lasselle.pegasus@gmail.com
+git config --global user.email jean-baptiste.lasselle@graviteesource.com
 git config --global user.signingkey 7B19A8E1574C2883
 # Now, to sign GIt commits, for example inside an SSH session (where TTY is a bit different ...)
 export GPG_TTY=$(tty)
@@ -91,7 +91,7 @@ ssh -Ti ~/.ssh.perso.backed/id_rsa git@gitlab.com
 # work on my personal projects
 git config --global commit.gpgsign true
 git config --global user.name "Jean-Baptiste-Lasselle"
-git config --global user.email jean-baptiste.lasselle@graviteesource.com
+git config --global user.email jean.baptiste.lasselle.pegasus@gmail.com
 git config --global user.signingkey 7B19A8E1574C2883
 # Now, to sign GIt commits, for example inside an SSH session (where TTY is a bit different ...)
 export GPG_TTY=$(tty)

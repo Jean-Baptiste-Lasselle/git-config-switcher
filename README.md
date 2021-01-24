@@ -1,8 +1,19 @@
 # git aliases (tree viewer)
 
-* Here are the gitalias commands that I define to visualize the git commits tree : 
+* Here are the git alias commands that I define to visualize the git commits tree : 
 
 ```bash
+
+cat <<EOF >>~/.gitconfig.test
+[alias]
+
+    lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all 
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    lg3 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'  --all
+
+EOF
+
+
 [user]
 	name = Jean-Baptiste-Lasselle
 	signingkey = 7B19A8E1574C2883
